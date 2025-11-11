@@ -10,12 +10,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Call VirusTotal API using your (secret) API key
-    await fetch("https://kudosyauqi01234-proggithub-o7qsu9ld6-kudos-projects-08ed5d67.vercel.app//api/scan-url", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ url: urlToScan }),
-});
+    const vtRes = await fetch("https://www.virustotal.com/api/v3/urls", {
+      method: "POST",
+      headers: {
+        "x-apikey": process.env.VT_API_KEY, // Your VirusTotal API key in Vercel Environment Variable
+        "accept": "application/json",
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      body: `url=${encodeURIComponent(url)}`, // This is the format VirusTotal expects
+    });
+
     const data = await vtRes.json();
     res.status(200).json(data);
   } catch (error) {
