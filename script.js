@@ -19,18 +19,13 @@ const showLoading = message => updateResult(`
 // Displays an error message
 const showError = message => updateResult(`<p class="error">${message}</p>`);
 
-// Generic function to make a request to your Vercel API proxy
-async function makeRequest(path, options = {}) {
-    const response = await fetch(`https://<https://vercel.com/kudos-projects-08ed5d67/kudosyauqi01234-prog.github.io/6jfeQKmWwWg1VJffeVA95VeS5jMH>/api/${path}`, options);
+// Generic function to make API requests to Vercel proxy
+async function makeRequest(url, options = {}) {
+    const response = await fetch(url, options);
 
     // Handle failed requests gracefully
     if (!response.ok) {
-        let error;
-        try {
-            error = await response.json();
-        } catch {
-            error = { error: { message: response.statusText } };
-        }
+        const error = await response.json().catch(() => ({ error: { message: response.statusText } }));
         throw new Error(error.error?.message || 'Request failed!');
     }
 
@@ -51,8 +46,8 @@ async function scanURL() {
     try {
         showLoading("Submitting URL for scanning...");
 
-        // Submit URL to your proxy API
-        const submitResult = await makeRequest("scan-url", {
+        // Submit URL to your Vercel serverless function
+        const submitResult = await makeRequest("https://kudosyauqi01234-proggithubio-git-main-kudos-projects-08ed5d67.vercel.app/.vercel.app/api/scan-url", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -75,12 +70,7 @@ async function scanURL() {
     }
 }
 
-// Handles the process of scanning a file (NOT SUPPORTED unless you add an api/scan-file.js on your backend!)
-async function scanFile() {
-    showError("File scan not implemented for proxy backend yet. Ask for file scan code if you want this feature.");
-}
-
-// Polls for analysis results, retrying until complete or timeout
+// Polls VirusTotal for analysis results, retrying until complete or timeout
 async function pollAnalysisResults(analysisId, fileName = '') {
     const maxAttempts = 20;
     let attempts = 0;
@@ -90,21 +80,19 @@ async function pollAnalysisResults(analysisId, fileName = '') {
         try {
             showLoading(`Analyzing${fileName ? ` ${fileName}` : ''}... (${((maxAttempts - attempts) * interval / 1000).toFixed(0)}s remaining)`);
 
-            // Poll proxy for analysis result
-            const report = await fetch(`https://www.virustotal.com/api/v3/analyses/${analysisId}`, {
-                method: "GET",
-                headers: {
-                    "Accept": "application/json"
-                }
-            });
+            // Directly call VirusTotal API: not possible from frontend!
+            // Workaround: You need a Vercel serverless function for polling
+            // For now, we try a GET to the VirusTotal API (which will likely fail on CORS if called from browser).
+            // Best practice: Implement /api/analysis/[id] endpoint in Vercel and call that instead.
 
-            const result = await report.json();
-            const status = result.data?.attributes?.status;
+            const report = await fetch(`https://www.virustotal.com/api/v3/analyses/${analysisId}`);
+            const data = await report.json();
+            const status = data.data?.attributes?.status;
 
             if (!status) throw new Error("Invalid analysis response!");
 
             if (status === "completed") {
-                showFormattedResult(result);
+                showFormattedResult(data);
                 break;
             }
 
@@ -233,3 +221,5 @@ window.addEventListener('load', () => {
     const modal = getElement("fullReportModal");
     window.addEventListener('click', e => e.target === modal && closeModal());
 });
+
+// Remove unused API key!
