@@ -47,7 +47,7 @@ async function scanURL() {
         showLoading("Submitting URL for scanning...");
 
         // Submit URL to your Vercel serverless function
-        const submitResult = await makeRequest("https://kudosyauqi01234-proggithubio-git-main-kudos-projects-08ed5d67.vercel.app/.vercel.app/api/scan-url", {
+        const submitResult = await makeRequest("https://syauqi01234-proggithubio.vercel.app/.vercel.app/api/scan-url", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
