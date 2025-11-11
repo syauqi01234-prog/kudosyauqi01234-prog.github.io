@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   try {
     // Call VirusTotal API using your (secret) API key
-    await fetch("https://your-vercel-project.vercel.app/api/scan-url", {
+    await fetch("https://kudosyauqi01234-proggithub-o7qsu9ld6-kudos-projects-08ed5d67.vercel.app//api/scan-url", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ url: urlToScan }),
