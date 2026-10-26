@@ -113,3 +113,314 @@
 </div>
 
 <script>
+    // FULL VOCABULARY HSK 1, 2, 3
+    const vocab = {
+        "1": [
+            { h: "爱", p: "ài", e: "love" }, { h: "八", p: "bā", e: "eight" }, { h: "爸爸", p: "bàba", e: "dad" },
+            { h: "杯子", p: "bēizi", e: "cup" }, { h: "北京", p: "bějīng", e: "Beijing" }, { h: "本", p: "běn", e: "measure word" },
+            { h: "不客气", p: "bú kèqi", e: "you're welcome" }, { h: "不", p: "bù", e: "not/no" }, { h: "菜", p: "cài", e: "dish" },
+            { h: "茶", p: "chá", e: "tea" }, { h: "吃", p: "chī", e: "eat" }, { h: "出租车", p: "chūzūchē", e: "taxi" },
+            { h: "打电话", p: "dǎ diànhuà", e: "make a call" }, { h: "大", p: "dà", e: "big" }, { h: "的", p: "de", e: "possessive" },
+            { h: "点", p: "diǎn", e: "o'clock" }, { h: "电脑", p: "diànnǎo", e: "computer" }, { h: "电视", p: "diànshì", e: "TV" },
+            { h: "电影", p: "diànyǐng", e: "movie" }, { h: "东西", p: "dōngxi", e: "thing" }, { h: "都", p: "dōu", e: "all" },
+            { h: "读", p: "dú", e: "read" }, { h: "对不起", p: "duìbuqǐ", e: "sorry" }, { h: "多", p: "duō", e: "many" },
+            { h: "多少", p: "duōshao", e: "how many" }, { h: "儿子", p: "érzi", e: "son" }, { h: "二", p: "èr", e: "two" },
+            { h: "饭馆", p: "fànguǎn", e: "restaurant" }, { h: "飞机", p: "fēijī", e: "airplane" }, { h: "分钟", p: "fēnzhōng", e: "minute" },
+            { h: "高兴", p: "gāoxìng", e: "happy" }, { h: "个", p: "gè", e: "measure word" }, { h: "工作", p: "gōngzuò", e: "work" },
+            { h: "狗", p: "gǒu", e: "dog" }, { h: "汉语", p: "hànyǔ", e: "Chinese" }, { h: "好", p: "hǎo", e: "good" },
+            { h: "号", p: "hào", e: "date/number" }, { h: "喝", p: "hē", e: "drink" }, { h: "和", p: "hé", e: "and" },
+            { h: "很", p: "hěn", e: "very" }, { h: "后面", p: "hòumiàn", e: "behind" }, { h: "回", p: "huí", e: "return" },
+            { h: "会", p: "huì", e: "can" }, { h: "几", p: "jǐ", e: "how many" }, { h: "家", p: "jiā", e: "home" },
+            { h: "叫", p: "jiào", e: "called" }, { h: "今天", p: "jīntiān", e: "today" }, { h: "九", p: "jiǔ", e: "nine" },
+            { h: "开", p: "kāi", e: "open" }, { h: "看", p: "kàn", e: "look" }, { h: "看见", p: "kànjiàn", e: "see" },
+            { h: "块", p: "kuài", e: "money unit" }, { h: "来", p: "lái", e: "come" }, { h: "老师", p: "lǎoshī", e: "teacher" },
+            { h: "了", p: "le", e: "particle" }, { h: "冷", p: "lěng", e: "cold" }, { h: "里", p: "lǐ", e: "inside" },
+            { h: "零", p: "líng", e: "zero" }, { h: "六", p: "liù", e: "six" }, { h: "妈妈", p: "māma", e: "mom" },
+            { h: "吗", p: "ma", e: "question?" }, { h: "买", p: "mǎi", e: "buy" }, { h: "猫", p: "māo", e: "cat" },
+            { h: "没", p: "méi", e: "not have" }, { h: "没关系", p: "méiguānxi", e: "no problem" }, { h: "明天", p: "míngtiān", e: "tomorrow" },
+            { h: "名字", p: "míngzi", e: "name" }, { h: "哪", p: "nǎ", e: "which" }, { h: "哪儿", p: "nǎr", e: "where" },
+            { h: "那", p: "nà", e: "that" }, { h: "那儿", p: "nàr", e: "there" }, { h: "呢", p: "ne", e: "question particle" },
+            { h: "能", p: "néng", e: "can" }, { h: "你", p: "nǐ", e: "you" }, { h: "年", p: "nián", e: "year" },
+            { h: "女儿", p: "nǚ'ér", e: "daughter" }, { h: "朋友", p: "péngyou", e: "friend" }, { h: "漂亮", p: "piàoliang", e: "pretty" },
+            { h: "苹果", p: "píngguǒ", e: "apple" }, { h: "七", p: "qī", e: "seven" }, { h: "钱", p: "qián", e: "money" },
+            { h: "前面", p: "qiánmiàn", e: "front" }, { h: "请", p: "qǐng", e: "please" }, { h: "去", p: "qù", e: "go" },
+            { h: "热", p: "rè", e: "hot" }, { h: "人", p: "rén", e: "person" }, { h: "认识", p: "rènshi", e: "know" },
+            { h: "三", p: "sān", e: "three" }, { h: "商店", p: "shāngdiàn", e: "shop" }, { h: "上", p: "shàng", e: "up" },
+            { h: "上午", p: "shàngwǔ", e: "morning" }, { h: "少", p: "shǎo", e: "few" }, { h: "谁", p: "shéi", e: "who" },
+            { h: "什么", p: "shénme", e: "what" }, { h: "十", p: "shí", e: "ten" }, { h: "时候", p: "shíhou", e: "time" },
+            { h: "是", p: "shì", e: "be" }, { h: "书", p: "shū", e: "book" }, { h: "水", p: "shuǐ", e: "water" },
+            { h: "水果", p: "shuǐguǒ", e: "fruit" }, { h: "睡觉", p: "shuìjiào", e: "sleep" }, { h: "说", p: "shuō", e: "speak" },
+            { h: "说话", p: "shuōhuà", e: "talk" }, { h: "四", p: "sì", e: "four" }, { h: "岁", p: "suì", e: "years old" },
+            { h: "他", p: "tā", e: "he" }, { h: "她", p: "tā", e: "she" }, { h: "太", p: "tài", e: "too" },
+            { h: "天气", p: "tiānqì", e: "weather" }, { h: "听", p: "tīng", e: "listen" }, { h: "同学", p: "tóngxué", e: "classmate" },
+            { h: "喂", p: "wèi", e: "hello" }, { h: "我", p: "wǒ", e: "I" }, { h: "我们", p: "wǒmen", e: "we" },
+            { h: "五", p: "wǔ", e: "five" }, { h: "喜欢", p: "xǐhuan", e: "like" }, { h: "下", p: "xià", e: "down" },
+            { h: "下午", p: "xiàwǔ", e: "afternoon" }, { h: "下雨", p: "xiàyǔ", e: "rain" }, { h: "先生", p: "xiānsheng", e: "Mr." },
+            { h: "现在", p: "xiànzài", e: "now" }, { h: "想", p: "xiǎng", e: "think" }, { h: "小", p: "xiǎo", e: "small" },
+            { h: "小姐", p: "xiǎojiě", e: "Miss" }, { h: "些", p: "xiē", e: "some" }, { h: "写", p: "xiě", e: "write" },
+            { h: "谢谢", p: "xièxie", e: "thanks" }, { h: "星期", p: "xīngqī", e: "week" }, { h: "学生", p: "xuésheng", e: "student" },
+            { h: "学习", p: "xuéxí", e: "study" }, { h: "学校", p: "xuéxiào", e: "school" }, { h: "一", p: "yī", e: "one" },
+            { h: "衣服", p: "yīfu", e: "clothes" }, { h: "医生", p: "yīshēng", e: "doctor" }, { h: "医院", p: "yīyuàn", e: "hospital" },
+            { h: "椅子", p: "yǐzi", e: "chair" }, { h: "有", p: "yǒu", e: "have" }, { h: "月", p: "yuè", e: "month" },
+            { h: "再见", p: "zàijiàn", e: "goodbye" }, { h: "在", p: "zài", e: "at" }, { h: "怎么", p: "zěnme", e: "how" },
+            { h: "怎么样", p: "zěnmeyàng", e: "how about" }, { h: "这", p: "zhè", e: "this" }, { h: "这儿", p: "zhèr", e: "here" },
+            { h: "中国", p: "zhōngguó", e: "China" }, { h: "中午", p: "zhōngwǔ", e: "noon" }, { h: "住", p: "zhù", e: "live" },
+            { h: "桌子", p: "zhuōzi", e: "desk" }, { h: "字", p: "zì", e: "character" }, { h: "昨天", p: "zuótiān", e: "yesterday" },
+            { h: "坐", p: "zuò", e: "sit" }, { h: "做", p: "zuò", e: "do" }
+        ],
+        "2": [
+            { h: "吧", p: "ba", e: "modal particle" }, { h: "白", p: "bái", e: "white" }, { h: "百", p: "bǎi", e: "hundred" },
+            { h: "帮助", p: "bāngzhù", e: "help" }, { h: "报纸", p: "bàozhǐ", e: "newspaper" }, { h: "比", p: "bǐ", e: "compare" },
+            { h: "别", p: "bié", e: "don't" }, { h: "长", p: "cháng", e: "long" }, { h: "唱歌", p: "chànggē", e: "sing" },
+            { h: "出", p: "chū", e: "exit" }, { h: "穿", p: "chuān", e: "wear" }, { h: "船", p: "chuán", e: "boat" },
+            { h: "次", p: "cì", e: "times" }, { h: "从", p: "cóng", e: "from" }, { h: "错", p: "cuò", e: "wrong" },
+            { h: "大家", p: "dàjiā", e: "everyone" }, { h: "打篮球", p: "dǎ lánqiú", e: "play basketball" }, { h: "到", p: "dào", e: "arrive" },
+            { h: "懂", p: "dǒng", e: "understand" }, { h: "对", p: "duì", e: "correct" }, { h: "非常", p: "fēicháng", e: "extremely" },
+            { h: "服务员", p: "fúwùyuán", e: "waiter" }, { h: "高", p: "gāo", e: "tall" }, { h: "告诉", p: "gàosu", e: "tell" },
+            { h: "哥哥", p: "gēge", e: "older brother" }, { h: "给", p: "gěi", e: "give" }, { h: "公共汽车", p: "gōnggòng qìchē", e: "bus" },
+            { h: "公司", p: "gōngsī", e: "company" }, { h: "贵", p: "guì", e: "expensive" }, { h: "孩子", p: "háizi", e: "child" },
+            { h: "好吃", p: "hǎochī", e: "delicious" }, { h: "黑", p: "hēi", e: "black" }, { h: "红", p: "hóng", e: "red" },
+            { h: "火车站", p: "huǒchēzhàn", e: "train station" }, { h: "机场", p: "jīchǎng", e: "airport" }, { h: "鸡蛋", p: "jīdàn", e: "egg" },
+            { h: "件", p: "jiàn", e: "measure word (clothes)" }, { h: "教室", p: "jiàoshì", e: "classroom" }, { h: "姐姐", p: "jiějie", e: "older sister" },
+            { h: "介绍", p: "jièshào", e: "introduce" }, { h: "进", p: "jìn", e: "enter" }, { h: "近", p: "jìn", e: "near" },
+            { h: "就", p: "jiù", e: "just/then" }, { h: "觉得", p: "juéde", e: "feel" }, { h: "咖啡", p: "kāfēi", e: "coffee" },
+            { h: "开始", p: "kāishǐ", e: "start" }, { h: "考试", p: "kǎoshì", e: "exam" }, { h: "可能", p: "kěnéng", e: "maybe" },
+            { h: "可以", p: "kěyǐ", e: "can" }, { h: "快", p: "kuài", e: "fast" }, { h: "快乐", p: "kuàilè", e: "happy" },
+            { h: "累", p: "lèi", e: "tired" }, { h: "离", p: "lí", e: "away from" }, { h: "两", p: "liǎng", e: "two" },
+            { h: "路", p: "lù", e: "road" }, { h: "旅游", p: "lǚyóu", e: "travel" }, { h: "卖", p: "mài", e: "sell" },
+            { h: "慢", p: "màn", e: "slow" }, { h: "忙", p: "máng", e: "busy" }, { h: "每", p: "měi", e: "every" },
+            { h: "妹妹", p: "mèimei", e: "younger sister" }, { h: "门", p: "mén", e: "door" }, { h: "男人", p: "nánrén", e: "man" },
+            { h: "您", p: "nín", e: "you (formal)" }, { h: "牛奶", p: "niúnǎi", e: "milk" }, { h: "女人", p: "nǚrén", e: "woman" },
+            { h: "旁边", p: "pángbiān", e: "side" }, { h: "跑步", p: "pǎobù", e: "run" }, { h: "便宜", p: "piányi", e: "cheap" },
+            { h: "票", p: "piào", e: "ticket" }, { h: "妻子", p: "qīzi", e: "wife" }, { h: "起床", p: "qǐchuáng", e: "get up" },
+            { h: "千", p: "qiān", e: "thousand" }, { h: "晴", p: "qíng", e: "sunny" }, { h: "去年", p: "qùnián", e: "last year" },
+            { h: "让", p: "ràng", e: "let/allow" }, { h: "上班", p: "shàngbān", e: "go to work" }, { h: "身体", p: "shēntǐ", e: "body" },
+            { h: "生病", p: "shēngbìng", e: "sick" }, { h: "生日", p: "shēngrì", e: "birthday" }, { h: "时间", p: "shíjiān", e: "time" },
+            { h: "事情", p: "shìqing", e: "matter" }, { h: "手表", p: "shǒubiǎo", e: "watch" }, { h: "手机", p: "shǒujī", e: "cell phone" },
+            { h: "说", p: "shuō", e: "speak" }, { h: "送", p: "sòng", e: "send" }, { h: "它", p: "tā", e: "it" },
+            { h: "踢足球", p: "tī zúqiú", e: "play soccer" }, { h: "题", p: "tí", e: "question" }, { h: "跳舞", p: "tiàowǔ", e: "dance" },
+            { h: "外", p: "wài", e: "outside" }, { h: "完", p: "wán", e: "finish" }, { h: "玩", p: "wán", e: "play" },
+            { h: "晚上", p: "wǎnshang", e: "evening" }, { h: "为什么", p: "wèishénme", e: "why" }, { h: "问", p: "wèn", e: "ask" },
+            { h: "问题", p: "wèntí", e: "problem" }, { h: "希望", p: "xīwàng", e: "hope" }, { h: "西瓜", p: "xīguā", e: "watermelon" },
+            { h: "洗", p: "xǐ", e: "wash" }, { h: "小时", p: "xiǎoshí", e: "hour" }, { h: "笑", p: "xiào", e: "laugh" },
+            { h: "新", p: "xīn", e: "new" }, { h: "姓", p: "xìng", e: "surname" }, { h: "休息", p: "xiūxi", e: "rest" },
+            { h: "雪", p: "xuě", e: "snow" }, { h: "颜色", p: "yánsè", e: "color" }, { h: "眼睛", p: "yǎnjing", e: "eye" },
+            { h: "羊肉", p: "yángròu", e: "mutton" }, { h: "药", p: "yào", e: "medicine" }, { h: "要", p: "yào", e: "want" },
+            { h: "也", p: "yě", e: "also" }, { h: "已经", p: "yǐjīng", e: "already" }, { h: "一起", p: "yìqǐ", e: "together" },
+            { h: "意思", p: "yìsi", e: "meaning" }, { h: "因为", p: "yīnwèi", e: "because" }, { h: "阴", p: "yīn", e: "cloudy" },
+            { h: "游泳", p: "yóuyǒng", e: "swim" }, { h: "右边", p: "yòubian", e: "right side" }, { h: "鱼", p: "yú", e: "fish" },
+            { h: "远", p: "yuǎn", e: "far" }, { h: "运动", p: "yùndòng", e: "exercise" }, { h: "再", p: "zài", e: "again" },
+            { h: "早上", p: "zǎoshang", e: "morning" }, { h: "丈夫", p: "zhàngfu", e: "husband" }, { h: "找", p: "zhǎo", e: "find" },
+            { h: "真", p: "zhēn", e: "real" }, { h: "正在", p: "zhèngzài", e: "being" }, { h: "知道", p: "zhīdào", e: "know" },
+            { h: "准备", p: "zhǔnbèi", e: "prepare" }, { h: "走", p: "zǒu", e: "walk" }, { h: "最", p: "zuì", e: "most" },
+            { h: "左边", p: "zuǒbian", e: "left side" }
+        ],
+        "3": [
+            { h: "阿姨", p: "āyí", e: "aunt" }, { h: "矮", p: "ǎi", e: "short" }, { h: "安静", p: "ānjìng", e: "quiet" },
+            { h: "把", p: "bǎ", e: "handle/particle" }, { h: "搬", p: "bān", e: "move" }, { h: "办法", p: "bànfǎ", e: "method" },
+            { h: "办公室", p: "bàngōngshì", e: "office" }, { h: "帮忙", p: "bāngmáng", e: "help" }, { h: "包", p: "bāo", e: "bag" },
+            { h: "饱", p: "bǎo", e: "full" }, { h: "北方", p: "běifāng", e: "north" }, { h: "被", p: "bèi", e: "passive particle" },
+            { h: "鼻子", p: "bízi", e: "nose" }, { h: "比较", p: "bǐjiào", e: "relatively" }, { h: "比赛", p: "bǐsài", e: "match" },
+            { h: "必须", p: "bìxū", e: "must" }, { h: "变化", p: "biànhuà", e: "change" }, { h: "别人", p: "biérén", e: "others" },
+            { h: "冰箱", p: "bīngxiāng", e: "fridge" }, { h: "不但...而且", p: "búdàn...érqiě", e: "not only" }, { h: "菜单", p: "càidān", e: "menu" },
+            { h: "草", p: "cǎo", e: "grass" }, { h: "超市", p: "chāoshì", e: "supermarket" }, { h: "成绩", p: "chéngjì", e: "grade" },
+            { h: "城市", p: "chéngshì", e: "city" }, { h: "迟到", p: "chídào", e: "late" }, { h: "厨房", p: "chúfáng", e: "kitchen" },
+            { h: "除了", p: "chúle", e: "except for" }, { h: "春", p: "chūn", e: "spring" }, { h: "聪明", p: "cōngmíng", e: "smart" },
+            { h: "打算", p: "dǎsuàn", e: "plan" }, { h: "当然", p: "dāngrán", e: "of course" }, { h: "地图", p: "dìtú", e: "map" },
+            { h: "电梯", p: "diàntī", e: "elevator" }, { h: "冬", p: "dōng", e: "winter" }, { h: "动物", p: "dòngwù", e: "animal" },
+            { h: "锻炼", p: "duànliàn", e: "exercise" }, { h: "饿", p: "è", e: "hungry" }, { h: "耳多", p: "ěrduo", e: "ear" },
+            { h: "发烧", p: "fāshāo", e: "fever" }, { h: "方便", p: "fāngbiàn", e: "convenient" }, { h: "放心", p: "fàngxīn", e: "assured" },
+            { h: "附近", p: "fùjìn", e: "nearby" }, { h: "复习", p: "fùxí", e: "review" }, { h: "干净", p: "gānjìng", e: "clean" },
+            { h: "感冒", p: "gǎnmào", e: "cold" }, { h: "根据", p: "gēnjù", e: "according to" }, { h: "公园", p: "gōngyuán", e: "park" },
+            { h: "故事", p: "gùshi", e: "story" }, { h: "刮风", p: "guāfēng", e: "windy" }, { h: "关于", p: "guānyú", e: "about" },
+            { h: "害怕", p: "hàipà", e: "afraid" }, { h: "护照", p: "hùzhào", e: "passport" }, { h: "花", p: "huā", e: "flower/spend" },
+            { h: "画", p: "huà", e: "draw" }, { h: "坏", p: "huài", e: "bad" }, { h: "欢迎", p: "huānyíng", e: "welcome" },
+            { h: "环境", p: "huánjìng", e: "environment" }, { h: "换", p: "huàn", e: "change" }, { h: "会议", p: "huìyì", e: "meeting" },
+            { h: "或者", p: "huòzhě", e: "or" }, { h: "几乎", p: "jīhū", e: "almost" }, { h: "极", p: "jí", e: "extremely" },
+            { h: "记得", p: "jìde", e: "remember" }, { h: "季节", p: "jìjié", e: "season" }, { h: "检查", p: "jiǎnchá", e: "check" },
+            { h: "简单", p: "jiǎndān", e: "simple" }, { h: "健康", p: "jiànkāng", e: "healthy" }, { h: "讲", p: "jiǎng", e: "speak" },
+            { h: "脚", p: "jiǎo", e: "foot" }, { h: "接", p: "jiē", e: "receive/pick up" }, { h: "节目", p: "jiémù", e: "program" },
+            { h: "节日", p: "jiérì", e: "festival" }, { h: "结婚", p: "jiéhūn", e: "marry" }, { h: "解决", p: "jiějué", e: "solve" },
+            { h: "借", p: "jiè", e: "borrow" }, { h: "经常", p: "jīngcháng", e: "often" }, { h: "经理", p: "jīnglǐ", e: "manager" },
+            { h: "久", p: "jiǔ", e: "long time" }, { h: "旧", p: "jiù", e: "old" }, { h: "决定", p: "juédìng", e: "decide" },
+            { h: "渴", p: "kě", e: "thirsty" }, { h: "可爱", p: "kě'ài", e: "cute" }, { h: "裤子", p: "kùzi", e: "pants" },
+            { h: "筷子", p: "kuàizi", e: "chopsticks" }, { h: "蓝", p: "lán", e: "blue" }, { h: "离开", p: "líkāi", e: "leave" },
+            { h: "礼物", p: "lǐwù", e: "gift" }, { h: "历史", p: "lìshǐ", e: "history" }, { h: "脸", p: "liǎn", e: "face" },
+            { h: "练习", p: "liànxí", e: "practice" }, { h: "满意", p: "mǎnyì", e: "satisfied" }, { h: "面包", p: "miànbāo", e: "bread" }
+        ]
+    };
+
+    let activeDeck = [];
+    let lastUsedIndex = 0;
+    let currentIdx = 0;
+    let score = 0;
+    let isLocked = false;
+    let missedWords = [];
+    let currentLevel = "1";
+
+    function simplifyPinyin(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z]/g, "");
+    }
+
+    function toggleInputs() {
+        const select = document.getElementById('quiz-length-select');
+        document.getElementById('custom-input-container').style.display = (select.value === 'custom') ? 'block' : 'none';
+        document.getElementById('range-input-container').style.display = (select.value === 'range') ? 'block' : 'none';
+    }
+
+    function startQuiz() {
+        currentLevel = document.getElementById('hsk-level').value;
+        const lengthMode = document.getElementById('quiz-length-select').value;
+        const order = document.getElementById('quiz-order').value;
+        
+        let deck = [...vocab[currentLevel]]; 
+        let finalDeck = [];
+        let startIndex = 0;
+        let endIndex = 0;
+
+        if (lengthMode === 'custom') {
+            endIndex = parseInt(document.getElementById('custom-count').value) || 10;
+            finalDeck = deck.slice(0, endIndex);
+        } else if (lengthMode === 'range') {
+            startIndex = parseInt(document.getElementById('range-start').value) - 1;
+            endIndex = parseInt(document.getElementById('range-end').value);
+            finalDeck = deck.slice(startIndex, endIndex);
+        } else if (lengthMode === 'all') {
+            endIndex = deck.length;
+            finalDeck = deck;
+        } else {
+            endIndex = parseInt(lengthMode);
+            finalDeck = deck.slice(0, endIndex);
+        }
+
+        lastUsedIndex = endIndex; // Track where we stopped in the level deck
+        if (order === 'random') finalDeck.sort(() => Math.random() - 0.5);
+
+        activeDeck = finalDeck;
+        launchQuiz();
+    }
+
+    function launchQuiz() {
+        if (activeDeck.length === 0) return alert("Deck is empty!");
+        document.getElementById('menu-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'none';
+        document.getElementById('quiz-screen').style.display = 'block';
+        document.getElementById('total-num').innerText = activeDeck.length;
+        document.getElementById('display-level').innerText = currentLevel;
+        currentIdx = 0; score = 0; missedWords = [];
+        document.getElementById('score').innerText = "0";
+        nextWord();
+    }
+
+    function nextWord() {
+        if (currentIdx >= activeDeck.length) return showFinalResults();
+        isLocked = false;
+        const word = activeDeck[currentIdx];
+        document.getElementById('hanzi').innerText = word.h;
+        document.getElementById('english-hint').innerText = word.e;
+        document.getElementById('english-hint').style.visibility = "hidden";
+        document.getElementById('answer-input').value = "";
+        document.getElementById('feedback').innerText = "";
+        document.getElementById('current-num').innerText = currentIdx + 1;
+        document.getElementById('answer-input').focus();
+    }
+
+    function checkAnswer() {
+        if (isLocked) return;
+        const raw = document.getElementById('answer-input').value.trim();
+        if (!raw) return;
+
+        isLocked = true;
+        const current = activeDeck[currentIdx];
+        const input = simplifyPinyin(raw);
+        const correct = simplifyPinyin(current.p);
+        const fb = document.getElementById('feedback');
+        document.getElementById('english-hint').style.visibility = "visible";
+
+        if (input === correct) {
+            fb.innerText = "Correct! ✅ " + current.p;
+            fb.className = "feedback correct";
+            score++;
+            document.getElementById('score').innerText = score;
+        } else {
+            fb.innerText = "Wrong ❌: " + current.p;
+            fb.className = "feedback wrong";
+            missedWords.push(current);
+        }
+        currentIdx++;
+        setTimeout(nextWord, 1500);
+    }
+
+    function showFinalResults() {
+        document.getElementById('quiz-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'block';
+        document.getElementById('final-score-text').innerText = `${score} / ${activeDeck.length}`;
+        
+        // Hide "Add 5 More" if no more words left in deck
+        const addBtn = document.getElementById('add-more-btn');
+        if (lastUsedIndex >= vocab[currentLevel].length) {
+            addBtn.style.display = "none";
+        } else {
+            addBtn.style.display = "block";
+        }
+
+        const listEl = document.getElementById('missed-list');
+        listEl.innerHTML = missedWords.length ? "" : "Perfect score! 🏆";
+        missedWords.forEach(w => {
+            const div = document.createElement('div');
+            div.className = "missed-item";
+            div.innerHTML = `<b>${w.h}</b> - ${w.p} <br><small>${w.e}</small>`;
+            listEl.appendChild(div);
+        });
+    }
+
+    function addFiveAndContinue() {
+        const fullLevelDeck = vocab[currentLevel];
+        const nextFive = fullLevelDeck.slice(lastUsedIndex, lastUsedIndex + 5);
+        
+        if (nextFive.length === 0) return alert("No more words in this level!");
+        
+        activeDeck = [...activeDeck, ...nextFive];
+        lastUsedIndex += 5;
+        
+        // Restart the quiz with the updated activeDeck starting from the new words
+        document.getElementById('result-screen').style.display = 'none';
+        document.getElementById('quiz-screen').style.display = 'block';
+        document.getElementById('total-num').innerText = activeDeck.length;
+        // Don't reset score or index, just keep going
+        nextWord();
+    }
+
+    // NEW FUNCTION: Revise the last 5 words from the session
+    function reviseLastFive() {
+        if (activeDeck.length === 0) return;
+        
+        // Slice the last 5 words (or fewer if the deck had fewer than 5 words)
+        let lastFive = activeDeck.slice(-5);
+        
+        // Respect shuffle setting if selected
+        const order = document.getElementById('quiz-order').value;
+        if (order === 'random') {
+            lastFive.sort(() => Math.random() - 0.5);
+        }
+        
+        activeDeck = lastFive;
+        launchQuiz();
+    }
+
+    function restartSameQuiz() {
+        launchQuiz();
+    }
+
+    function exitToMenu() {
+        document.getElementById('result-screen').style.display = 'none';
+        document.getElementById('menu-screen').style.display = 'block';
+    }
+
+    document.getElementById('answer-input').addEventListener("keypress", (e) => {
+        if (e.key === "Enter") checkAnswer();
+    });
+</script>
+
+</body>
+</html>
